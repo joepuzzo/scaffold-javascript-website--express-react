@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const createApp = ({ corsConfig }) => {
-  // Create Express application
+  // Create Express applicationn
   const app = express();
 
   // Health endpoint
