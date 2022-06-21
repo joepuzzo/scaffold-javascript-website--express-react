@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
+    "start": "node build/index.js",
     "test:watch": "jest --watch",
     "build": "rm -rf ./build && rm -rf ./src/client/build && webpack --config src/client/webpack/webpack.prod.cjs && cp -r src/server build && cp -r src/client/build/ ./build/client",
     "start:dev": "concurrently --raw \"npm run client:local\" \"npm run server:local\"",
