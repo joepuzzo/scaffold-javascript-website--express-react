@@ -6,6 +6,25 @@ import { ActionButton } from '@adobe/react-spectrum';
 // Hooks
 import useApp from '../../hooks/useApp';
 
+import { useNavigate } from 'react-router-dom';
+
+const NavLink = ({ children, href, ...rest }) => {
+  const navigate = useNavigate();
+
+  const onClick = (e) => {
+    e.preventDefault();
+    navigate(href);
+  };
+
+  return (
+    <li class="spectrum-SideNav-item is-selected">
+      <a {...rest} onClick={onClick} class="spectrum-SideNav-itemLink">
+        {children}
+      </a>
+    </li>
+  );
+};
+
 export const Nav = () => {
   const { toggleColorScheme } = useApp();
 
@@ -18,24 +37,10 @@ export const Nav = () => {
         </ActionButton>
       </Flex>
       <ul class="spectrum-SideNav">
-        <li class="spectrum-SideNav-item is-selected">
-          <a href="#" class="spectrum-SideNav-itemLink" aria-current="page">
-            Section Title 1
-          </a>
-        </li>
-        <li class="spectrum-SideNav-item is-disabled">
-          <a class="spectrum-SideNav-itemLink">Section Title 2</a>
-        </li>
-        <li class="spectrum-SideNav-item">
-          <a href="#" class="spectrum-SideNav-itemLink">
-            Section Title 3
-          </a>
-        </li>
-        <li class="spectrum-SideNav-item">
-          <a href="#" class="spectrum-SideNav-itemLink">
-            Section Title 4
-          </a>
-        </li>
+        <NavLink href="/home">Home</NavLink>
+        <NavLink href="/Admin">Admin</NavLink>
+        <NavLink href="/unauthorized">Unauthorized</NavLink>
+        <NavLink href="/asdf">404</NavLink>
       </ul>
     </nav>
   );
