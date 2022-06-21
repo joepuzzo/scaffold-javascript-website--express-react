@@ -26,7 +26,7 @@ export const Home = () => {
       <h1>Hello {user.name}!</h1>
       <h2>The Health Check is reporting {data.status}</h2>
       <Form>
-        <Input name="name" label="Name" placeholder="Joe" />
+        <Input name="name" label="Name" required="Name Required" />
         <Input name="age" type="number" label="Age" required="Age Required" />
         <Input name="phone" label="Phone" formatter="+1 (###)-###-####" />
         <Input name="color" label="Favorite Color" defaultValue="Green" />

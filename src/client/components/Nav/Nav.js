@@ -17,8 +17,8 @@ const NavLink = ({ children, href, ...rest }) => {
   };
 
   return (
-    <li class="spectrum-SideNav-item is-selected">
-      <a {...rest} onClick={onClick} class="spectrum-SideNav-itemLink">
+    <li className="spectrum-SideNav-item is-selected">
+      <a {...rest} onClick={onClick} className="spectrum-SideNav-itemLink">
         {children}
       </a>
     </li>
@@ -36,7 +36,7 @@ export const Nav = () => {
           <Contrast.default />
         </ActionButton>
       </Flex>
-      <ul class="spectrum-SideNav">
+      <ul className="spectrum-SideNav">
         <NavLink href="/home">Home</NavLink>
         <NavLink href="/Admin">Admin</NavLink>
         <NavLink href="/unauthorized">Unauthorized</NavLink>

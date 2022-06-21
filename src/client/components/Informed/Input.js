@@ -7,11 +7,14 @@ const Input = (props) => {
     type: 'text',
     ...props,
   });
-  const { error } = fieldState;
+  const { required } = userProps;
+  const { error, showError } = fieldState;
   return render(
     <TextField
       ref={ref}
       validationState={!error ? null : 'invalid'}
+      errorMessage={showError ? error : undefined}
+      isRequired={required}
       {...userProps}
       {...informed}
       onChange={(v) => fieldApi.setValue(v)}
