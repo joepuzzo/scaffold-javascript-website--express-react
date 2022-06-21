@@ -36,7 +36,7 @@ const createApp = ({ corsConfig }) => {
     app.use('/*', proxy('http://localhost:9000'));
   } else {
     // Routes for static content
-    app.use('/static', express.static(path.join(__dirname, './client/static')));
+    app.use('/static', express.static(path.join(__dirname, './static')));
     app.use(express.static(path.join(__dirname, './client'), { redirect: false }));
 
     /* final catch-all route to index.html defined last */
