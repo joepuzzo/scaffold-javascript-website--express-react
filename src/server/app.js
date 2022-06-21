@@ -1,12 +1,16 @@
 import express from 'express';
 import cors from 'cors';
-import path from 'path';
+import path, { dirname } from 'path';
 
 import health from './routes/health.js';
 import fail from './routes/fail.js';
 import errorHandler from './middleware/errorHandler.js';
 import proxy from './middleware/proxy.js';
-const __dirname = path.resolve();
+
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const createApp = ({ corsConfig }) => {
   // Create Express application
@@ -27,15 +31,15 @@ const createApp = ({ corsConfig }) => {
   // Route for static content
   if (process.env.NODE_ENV === 'development') {
     // Route for static content
-    app.use('/static', express.static(path.join(__dirname, 'src/server/static')));
+    app.use('/static', express.static(path.join(__dirname, './static')));
     // Route to dev server when developing
     app.use('/*', proxy('http://localhost:9000'));
   } else {
     // Routes for static content
-    app.use('/static', express.static(path.join(__dirname, './static')));
+    app.use('/static', express.static(path.join(__dirname, './client/static')));
     app.use(express.static(path.join(__dirname, './client'), { redirect: false }));
 
-    // Final catch-all route to index.html defined last
+    /* final catch-all route to index.html defined last */
     app.get('/*', (req, res) => {
       res.sendFile(path.join(__dirname, './client/index.html'));
     });

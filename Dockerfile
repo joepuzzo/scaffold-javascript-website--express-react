@@ -6,7 +6,7 @@ FROM node:16-alpine as base
 WORKDIR /app
 
 # copy intall suff
-COPY ["package-lock.json", "package.json", ".npmrc", "./"]
+COPY ["package-lock.json", "package.json", "./"]
 
 # install node packages
 RUN npm set progress=false && npm config set depth 0
