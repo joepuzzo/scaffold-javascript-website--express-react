@@ -6,7 +6,7 @@ import { ActionButton } from '@adobe/react-spectrum';
 // Hooks
 import useApp from '../../hooks/useApp';
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useOutsideAlerter from '../../hooks/useOutsideAlerter';
 
 const NavLink = ({ children, href, ...rest }) => {
@@ -17,8 +17,11 @@ const NavLink = ({ children, href, ...rest }) => {
     navigate(href);
   };
 
+  let location = useLocation();
+  const isSelected = href === location.pathname;
+
   return (
-    <li className="spectrum-SideNav-item is-selected">
+    <li className={`spectrum-SideNav-item ${isSelected ? 'is-selected' : ''}`}>
       <a {...rest} onClick={onClick} className="spectrum-SideNav-itemLink">
         {children}
       </a>
