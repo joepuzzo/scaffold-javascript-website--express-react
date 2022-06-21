@@ -96,3 +96,21 @@ footer {
 footer span {
   padding: 10px;
 }
+
+footer span {
+  padding: 10px;
+}
+
+/* ---------- basic overrides ---------- */
+
+button:hover {
+  cursor: pointer;
+}
+
+[class*='spectrum-Link'] {
+  text-decoration: none !important;
+}
+
+[class*='spectrum-Link']:hover {
+  text-decoration: underline !important;
+}
