@@ -82,3 +82,17 @@ main {
     padding-bottom: 5px;
   }
 }
+
+footer {
+  border-top: 1px solid var(--spectrum-global-color-gray-200);
+  background: var(--page-background);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+footer span {
+  padding: 10px;
+}

@@ -38,7 +38,7 @@ describe('Home', () => {
     render(<Home />);
     await waitFor(() => screen.getByText(/Hello/));
     expect(screen.getByText('Hello Elon!')).toBeInTheDocument();
-    expect(screen.getByText('The Health Check is reporting UP')).toBeInTheDocument();
+    expect(screen.getByText('Health Check UP')).toBeInTheDocument();
   });
 
   it('Renders data when call fails', async () => {

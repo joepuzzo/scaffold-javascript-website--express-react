@@ -24,14 +24,16 @@ export const Home = () => {
   return (
     <>
       <h1>Hello {user.name}!</h1>
-      <h2>The Health Check {data.status}</h2>
+      <h2>Health Check {data.status}</h2>
       <Form>
         <Input name="name" label="Name" required="Name Required" />
         <Input name="age" type="number" label="Age" required="Age Required" />
         <Input name="phone" label="Phone" formatter="+1 (###)-###-####" />
         <Input name="color" label="Favorite Color" defaultValue="Green" />
         <Button type="submit">submit</Button>
-        {/* <Debug /> */}
+        <div style={{ textAlign: 'left' }}>
+          <Debug />
+        </div>
       </Form>
     </>
   );
