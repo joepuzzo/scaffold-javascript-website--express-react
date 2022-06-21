@@ -1,0 +1,31 @@
+main {
+  box-sizing: border-box;
+  min-height: 100vh;
+  flex-direction: column;
+  margin-left: 256px;
+  margin-right: 180px;
+  padding: 40px 52px 0;
+  display: flex;
+}
+
+@media (max-width: 1020px) {
+  main {
+    margin-top: 48px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 40px 24px;
+  }
+}
+
+.sidenav {
+  width: 256px;
+  background: var(--spectrum-global-color-gray-200);
+  box-sizing: border-box;
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;
+  display: block;
+}
