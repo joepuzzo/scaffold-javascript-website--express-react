@@ -23,7 +23,7 @@ WORKDIR /app
 RUN npm i
 
 ## Copy the rest of the shit
-COPY ["babel.config.cjs", "postcss.config.cjs", "./"]
+COPY ["babel.config.cjs", "./"]
 COPY src ./src
 
 ## Build!!!
