@@ -6,6 +6,7 @@ import AppContext from '../context/AppContext';
  */
 const AppProvider = ({ children }) => {
   const [colorScheme, setColorScheme] = useState('dark');
+  const [navOpen, setNavOpen] = useState(false);
 
   const toggleColorScheme = () => {
     setColorScheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -13,7 +14,22 @@ const AppProvider = ({ children }) => {
     document.getElementById('app-html').classList.toggle('spectrum--darkest');
   };
 
-  const value = { colorScheme, setColorScheme, toggleColorScheme };
+  const toggleNav = () => {
+    setNavOpen((prev) => !prev);
+  };
+
+  const closeNav = () => {
+    setNavOpen(false);
+  };
+
+  const value = {
+    colorScheme,
+    setColorScheme,
+    toggleColorScheme,
+    navOpen,
+    closeNav,
+    toggleNav,
+  };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

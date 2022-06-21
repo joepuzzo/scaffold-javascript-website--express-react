@@ -1,7 +1,10 @@
+import { ActionButton } from '@adobe/react-spectrum';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ShowMenu from '@spectrum-icons/workflow/ShowMenu';
 
 import useMedia from '../../hooks/useMedia';
+import useApp from '../../hooks/useApp';
 
 const NavLink = ({ href, ...rest }) => {
   const navigate = useNavigate();
@@ -16,58 +19,23 @@ const NavLink = ({ href, ...rest }) => {
 
 export const Header = () => {
   // header contents modal open state when resize
-  const [modalOpen, setModalOpen] = useState(false);
   const { isDesktopUp } = useMedia();
+  const { toggleNav } = useApp();
 
   // For resizing header
   window.addEventListener('resize', () => {
     setModalOpen(false);
   });
 
+  if (!isDesktopUp) {
+    return (
+      <header className="pageHeader">
+        <ActionButton aria-label="Open Menu" onClick={() => toggleNav()}>
+          <ShowMenu.default />
+        </ActionButton>
+      </header>
+    );
+  }
+
   return null;
-
-  // return (
-  //   <SiteHeader animated className="tds-shell-masthead">
-  //     <SiteLogo appTitle="Express React Scaffold" />
-
-  //     {/* ---------- Desktop ---------- */}
-  //     {isDesktopUp && (
-  //       <>
-  //         <SiteNavItems align="center">
-  //           <NavLink animated href="/" text="Home" />
-  //           <NavLink animated href="/admin" text="Admin" />
-  //         </SiteNavItems>
-  //         <SiteNavItems align="end">
-  //           <NavItem animated href="/logout" text="Logout" />
-  //         </SiteNavItems>
-  //       </>
-  //     )}
-
-  //     {/* ---------- Mobile ---------- */}
-
-  //     {!isDesktopUp && (
-  //       <SiteNavItems align="end">
-  //         <NavItem animated onClick={() => setModalOpen(true)} text="Menu" />
-  //       </SiteNavItems>
-  //     )}
-
-  //     {!isDesktopUp && (
-  //       <Modal
-  //         className="tds-site-header-modal tds-modal--sheet-small tds-scrim--white"
-  //         onClose={() => {
-  //           setModalOpen(false);
-  //         }}
-  //         open={modalOpen}
-  //         variant="sheet-right"
-  //       >
-  //         <ModalContent key="mobile-content">
-  //           <SiteNavItems key="modal-content-navitems" layout="vertical">
-  //             <NavLink animated href="/" text="Home" />
-  //             <NavLink animated href="/admin" text="Admin" />
-  //           </SiteNavItems>
-  //         </ModalContent>
-  //       </Modal>
-  //     )}
-  //   </SiteHeader>
-  // );
 };
