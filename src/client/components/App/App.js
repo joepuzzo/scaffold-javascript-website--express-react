@@ -17,7 +17,7 @@ const App = () => {
   return (
     <Router>
       <Provider theme={defaultTheme} colorScheme={colorScheme}>
-        <div className="site--app tds-shell">
+        <div className="site--app">
           <Header />
           <Nav />
           <main>
